@@ -62,6 +62,7 @@ class Platzplan extends GridPane
             @Override
             public void handle(ActionEvent e)
             {
+            	
                 // Es gibt nur einen Listener für alle Buttons. Welcher der
                 // Buttons gedrückt wurde, muss deshalb aus dem Event ausgelesen
                 // werden.

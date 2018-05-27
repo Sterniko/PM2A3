@@ -114,18 +114,10 @@ public class VorstellungsAuswaehlWerkzeug extends ObservableSubwerkzeug
     {
 //        _ui.getVorstellungAuswahlList().getSelectionModel()
 //             .selectedItemProperty().addListener(event -> vorstellungWurdeAusgewaehlt());
+    	//TO SHOW:
         _ui.getVorstellungAuswahlList().getSelectionModel()
-            .selectedItemProperty().addListener(new ChangeListener<VorstellungsFormatierer>()
-                {
-                    @Override
-                    public void changed(
-                            ObservableValue<? extends VorstellungsFormatierer> arg0,
-                            VorstellungsFormatierer arg1,
-                            VorstellungsFormatierer arg2)
-                    {
-                        vorstellungWurdeAusgewaehlt();
-                    }
-                    
-                });
+            .selectedItemProperty().addListener(
+            		e ->  {vorstellungWurdeAusgewaehlt();
+            });
     }
 }

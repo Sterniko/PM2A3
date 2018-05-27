@@ -57,38 +57,23 @@ public class PlatzVerkaufsWerkzeug
     private void registriereUIAktionen()
     {
     
-        _ui.getVerkaufenButton().setOnAction(new EventHandler<ActionEvent>()
-                {
-                    @Override
-                    public void handle(ActionEvent ae)
-                    {
-                        verkaufePlaetze(_vorstellung);
-                    	System.out.println("You clicked the Verkaufen button");
-                    	Abrechnungswerkzeug abrechnung = new Abrechnungswerkzeug();
-                    	abrechnung.set_preis(_preisFuerAuswahl);                    	
-                    	abrechnung.aktivieren();
-                    }
-                });
+    	//TO SHOW
+        _ui.getVerkaufenButton().setOnAction(
+        		e -> {
+        			verkaufePlaetze(_vorstellung);
+                	System.out.println("You clicked the Verkaufen button");
+                	Abrechnungswerkzeug abrechnung = new Abrechnungswerkzeug();
+                	abrechnung.set_preis(_preisFuerAuswahl);                    	
+                	abrechnung.aktivieren();
+        		});
 
-        _ui.getStornierenButton().setOnAction(new EventHandler<ActionEvent>()
-                {
-                    @Override
-                    public void handle(ActionEvent ae)
-                    {
-                        stornierePlaetze(_vorstellung);
-                    }
-                });
+        _ui.getStornierenButton().setOnAction(
+        		e ->  stornierePlaetze(_vorstellung));
+        		
 
         _ui.getPlatzplan().addPlatzSelectionListener(
-                new PlatzSelectionListener()
-                {
-                    @Override
-                    public void auswahlGeaendert(PlatzSelectionEvent event)
-                    {
-                        reagiereAufNeuePlatzAuswahl(event
-                                .getAusgewaehltePlaetze());
-                    }
-                });
+        		e ->  reagiereAufNeuePlatzAuswahl(
+        				e.getAusgewaehltePlaetze()));        			
     }
 
     /**

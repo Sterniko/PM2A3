@@ -14,16 +14,6 @@ public class Abrechnungswerkzeug extends ObservableSubwerkzeug {
 		_uiVerk = new AbrechnungswerkzeugUI();
 	}
 
-	/**
-	 * kalkuliert das Wechselgeld
-	 * 
-	 * @return
-	 */
-	public int calculateRueckgeld() {
-
-		return 0;
-
-	}
 
 	public void aktivieren() {
 		_uiVerk.get_preisLabel().setText(preisTextPos());
@@ -49,39 +39,25 @@ public class Abrechnungswerkzeug extends ObservableSubwerkzeug {
 
 	private void gibFunktion() {
 		Button b = _uiVerk.get_abschlussButton();
-		b.setOnAction(new EventHandler<ActionEvent>() {
-			@Override
-			public void handle(ActionEvent ae) {
-				System.out.println("You clicked the Abschluss-button");
-				if (hasPaidEnough()) {
-					_uiVerk.showFinishedWindow();
 
-				} else {
-					_uiVerk.showMoreMoneyWindow();
-				}
-
+		b.setOnAction(e -> {
+			System.out.println("You clicked the Abschluss-button");
+			if (hasPaidEnough()) {
+				_uiVerk.showFinishedWindow();
+			} else {
+				_uiVerk.showMoreMoneyWindow();
 			}
-
 		});
 
-		_uiVerk.get_abbrechenButton().setOnAction(new EventHandler<ActionEvent>() {
-			@Override
-			public void handle(ActionEvent ae) {
+		_uiVerk.get_abbrechenButton().setOnAction(e -> {
+			System.out.println("You clicked the Abbrechen-button");
+			_uiVerk.showAreYouSureWindow();
+		});
 
-				System.out.println("You clicked the Abbrechen-button");
-				_uiVerk.showAreYouSureWindow();
-			}
-		}
-
-		);
-
-		_uiVerk.get_bezahlenButton().setOnAction(new EventHandler<ActionEvent>() {
-			@Override
-			public void handle(ActionEvent ae) {
-				System.out.println("You clicked the bezahlen-button");
-				calculateChange();
-				_uiVerk.get_textField().clear();
-			}
+		_uiVerk.get_bezahlenButton().setOnAction(e -> {
+			System.out.println("You clicked the bezahlen-button");
+			calculateChange();
+			_uiVerk.get_textField().clear();
 		});
 
 	}

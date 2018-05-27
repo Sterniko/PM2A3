@@ -91,16 +91,11 @@ public class KassenWerkzeug
     /**
      * Fügt die Funktionalitat zum Beenden-Button hinzu.
      */
+    //TO SHOW
     private void registriereUIAktionen()
     {
-        _ui.getBeendenButton().setOnAction(new EventHandler<ActionEvent>()
-                {
-                    @Override
-                    public void handle(ActionEvent ae)
-                    {
-                        _ui.schliesseFenster();
-                    }
-                });
+        _ui.getBeendenButton().setOnAction(
+        		e -> _ui.schliesseFenster());        		
     }
 
     /**
