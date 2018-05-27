@@ -1,10 +1,8 @@
 package de.hawhh.informatik.sml.kino.werkzeuge.abrechnung;
-
 import de.hawhh.informatik.sml.kino.werkzeuge.ObservableSubwerkzeug;
 import de.hawhh.informatik.sml.kino.werkzeuge.abrechnung.AbrechnungswerkzeugUI;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.scene.control.Button;
+
 
 public class Abrechnungswerkzeug extends ObservableSubwerkzeug {
 	private int _preis;
@@ -90,6 +88,11 @@ public class Abrechnungswerkzeug extends ObservableSubwerkzeug {
 
 	private boolean hasPaidEnough() {
 		return _preis <= 0;
+	}
+
+
+	public boolean properly() {
+		return _uiVerk.properly();
 	}
 
 }

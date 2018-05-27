@@ -30,6 +30,7 @@ class AbrechnungswerkzeugUI {
 	private Pane _hauptPanel;
 	private TextField _textField;
 	private final Stage _primaryStage;
+	private boolean _properly;
 
 	/**
 	 * Initialisiert die UI.
@@ -42,6 +43,7 @@ class AbrechnungswerkzeugUI {
 		_textField = new TextField();
 		_hauptPanel = init();
 		_primaryStage = new Stage();
+		_properly = true;
 
 	}
 
@@ -114,6 +116,11 @@ class AbrechnungswerkzeugUI {
 
 	void zeigeAn() {		
 		Scene scene = new Scene(_hauptPanel, 250, 250);
+		_primaryStage.setOnCloseRequest(evt -> {
+		        // prevent window from closing
+		        evt.consume();
+		        showAreYouSureWindow();
+		});
 		_primaryStage.setScene(scene);		
 		_primaryStage.initModality(Modality.APPLICATION_MODAL);
 		_primaryStage.showAndWait();
@@ -167,13 +174,18 @@ class AbrechnungswerkzeugUI {
 				"Sicher, die Transaktion abzubrechen? Der Kunde muss sein bisher gezahltes Geld zurückbekommen!");
 		System.out.println(alert.getButtonTypes().get(1).getText());
 		Optional<ButtonType> result = alert.showAndWait();	
-		if( result.get() == ButtonType.OK) close();
+		if( result.get() == ButtonType.OK) {
+			_properly = false;
+			close();
+		}
 	}
 
 	void close() {
 		this._primaryStage.close();
-		
-
+	}
+	
+	public boolean properly() {
+		return _properly;
 	}
 
 	
