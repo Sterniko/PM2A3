@@ -8,6 +8,7 @@ import javafx.scene.layout.Pane;
 import de.hawhh.informatik.sml.kino.fachwerte.Platz;
 import de.hawhh.informatik.sml.kino.materialien.Kinosaal;
 import de.hawhh.informatik.sml.kino.materialien.Vorstellung;
+import de.hawhh.informatik.sml.kino.werkzeuge.abrechnung.Abrechnungswerkzeug;
 
 /**
  * Mit diesem Werkzeug können Plätze verkauft und storniert werden. Es arbeitet
@@ -62,6 +63,10 @@ public class PlatzVerkaufsWerkzeug
                     public void handle(ActionEvent ae)
                     {
                         verkaufePlaetze(_vorstellung);
+                    	System.out.println("You clicked the Verkaufen button");
+                    	Abrechnungswerkzeug abrechnung = new Abrechnungswerkzeug();
+                    	abrechnung.set_preis(_preisFuerAuswahl);                    	
+                    	abrechnung.aktivieren();
                     }
                 });
 
